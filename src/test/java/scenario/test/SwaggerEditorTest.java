@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 public class SwaggerEditorTest {
     @BeforeClass
     public static void beforeClass() {
-        Configuration.browser = WebDriverRunner.CHROME;
+//Configuration.browser = WebDriverRunner.CHROME;
     }
 
 }

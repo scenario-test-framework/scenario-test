@@ -4,13 +4,14 @@
 export VERSION=0.0.1
 
 function local.start(){
+  local.stop
   # docker内部のディレクトリ参照は -v で指定可能。
   # /tmpにリソースをコピーし、コピーしたリソースでビルド&テスト
-  mkdir -p /tmp/scenario-data.$$
-  cp -R ./* /tmp/scenario-data.$$
-  docker run -v /tmp/scenario-data.$$:/root/scenario-test --name scenario-test scenario-test:$VERSION
-  echo $?
-  local.stop
+  DATE=$(date "+%Y%m%d_%H%M%S")
+  mkdir -p /tmp/scenario-data.$DATE
+  cp -R ./* /tmp/scenario-data.$DATE
+  docker run -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
+  exit $?
 }
 function local.stop(){
   # 停止＆イメージ削除
@@ -23,7 +24,8 @@ function local.logs(){
 function local.update(){
   # dockerイメージ更新
   local.stop
-  docker build --no-cache -t scenario-test:$VERSION .
+  #docker build --no-cache -t scenario-test:$VERSION .
+  docker build -t scenario-test:$VERSION .
 }
 function local.ps(){
   docker ps
