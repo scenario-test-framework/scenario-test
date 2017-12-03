@@ -18,6 +18,12 @@ public class SwaggerEditorSteps {
         editor.screenshot(arg1);
     }
 
+
+    @When("^\"([^\"]*)\" 部品 \"([^\"]*)\" のスクリーンショットをとる$")
+    public void 部品_のスクリーンショットをとる(String arg1, String arg2) throws Throwable {
+        editor.elementScreenshot(arg1,arg2);
+    }
+
     @When("^\"([^\"]*)\" をクリックする$")
     public void をクリックする(String arg1) throws Throwable {
         editor.click(arg1);

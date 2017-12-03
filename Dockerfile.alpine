@@ -3,7 +3,7 @@
 
 FROM alpine:edge
 
-# firefox‚ÌƒCƒ“ƒXƒg[ƒ‹
+# firefoxã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 RUN apk update
 RUN apk add                        \
     openjdk8                       \
@@ -14,21 +14,22 @@ RUN apk add                        \
     bash                           \
     firefox-esr                    \
     dbus
-# chrome‚Í‚¤‚Ü‚­“®ì‚µ‚È‚¢...
+# chromeã¯ã†ã¾ãå‹•ä½œã—ãªã„...
 #    chromium                       \
 #    chromium-chromedriver          \
 #    udev                           \
 #    ttf-freefont
 
-# pom‚Ì‚İ‚Ìó‘Ô‚Åƒrƒ‹ƒh‚µAƒ[ƒJƒ‹ƒŠƒ|ƒWƒgƒŠ‚ÉˆË‘¶ƒtƒ@ƒCƒ‹ƒ_ƒEƒ“ƒ[ƒh
+# pomã®ã¿ã®çŠ¶æ…‹ã§ãƒ“ãƒ«ãƒ‰ã—ã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒªãƒã‚¸ãƒˆãƒªã«ä¾å­˜ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
 RUN mkdir -p ~/scenario-test
 COPY ./pom.xml /root/scenario-test
 RUN cd ~/scenario-test && \
     mvn test
 
-# ‰¼‘zƒtƒŒ[ƒ€ƒoƒbƒtƒ@(xvfb)‹N“®•ƒeƒXƒgÀs
+# ä»®æƒ³ãƒ•ãƒ¬ãƒ¼ãƒ ãƒãƒƒãƒ•ã‚¡(xvfb)èµ·å‹•ï¼†ãƒ†ã‚¹ãƒˆå®Ÿè¡Œ
 CMD export DISPLAY=:99 && \
     ( Xvfb :99 & ) && \
+    umask 0000 && \
     cd ~/scenario-test && \
     mvn clean test
 

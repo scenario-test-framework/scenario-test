@@ -10,7 +10,7 @@ function local.start(){
   DATE=$(date "+%Y%m%d_%H%M%S")
   mkdir -p /tmp/scenario-data.$DATE
   cp -R ./* /tmp/scenario-data.$DATE
-  docker run -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
+  docker run --rm -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
   exit $?
 }
 function local.stop(){

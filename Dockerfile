@@ -1,11 +1,11 @@
 # scenario-test-framework
 #---------------------------------------------------------------------
-# chrome/firefoxƒTƒ|[ƒg
+# chrome/firefoxã‚µãƒãƒ¼ãƒˆ
 #---------------------------------------------------------------------
 
 FROM openjdk:8-jdk
 
-# chrome‚Æfirefox‚ÌƒCƒ“ƒXƒg[ƒ‹
+# chromeã¨firefoxã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 RUN apt-get update -y
 RUN apt-get install -y             \
     curl                           \
@@ -17,19 +17,16 @@ RUN curl -o ~/google-chrome-stable_current_amd64.deb https://dl.google.com/linux
 RUN apt install -y firefox-esr
 
 
-# pom‚Ì‚İ‚Ìó‘Ô‚Åƒrƒ‹ƒh‚µAƒ[ƒJƒ‹ƒŠƒ|ƒWƒgƒŠ‚ÉˆË‘¶ƒtƒ@ƒCƒ‹ƒ_ƒEƒ“ƒ[ƒh
+# pomã®ã¿ã®çŠ¶æ…‹ã§ãƒ“ãƒ«ãƒ‰ã—ã€ãƒ­ãƒ¼ã‚«ãƒ«ãƒªãƒã‚¸ãƒˆãƒªã«ä¾å­˜ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰
 RUN mkdir -p ~/scenario-test
 COPY ./pom.xml /root/scenario-test
-RUN cd ~/scenario-test && \
-    mvn test
+COPY ./entry-point.sh /root/scenario-test
+RUN chmod +x /root/scenario-test/entry-point.sh && \
+    /root/scenario-test/entry-point.sh init
 
 RUN apt-get clean               && \
     rm -rf /var/lib/apt/lists/*
 
-# ‰¼‘zƒtƒŒ[ƒ€ƒoƒbƒtƒ@(xvfb)‹N“®•ƒeƒXƒgÀs
-CMD export DISPLAY=:99 && \
-    ( Xvfb :99 & ) && \
-    cd ~/scenario-test && \
-    mvn clean test
-
-
+# ä»®æƒ³ãƒ•ãƒ¬ãƒ¼ãƒ ãƒãƒƒãƒ•ã‚¡(xvfb)èµ·å‹•ï¼†ãƒ†ã‚¹ãƒˆå®Ÿè¡Œ
+ENTRYPOINT ["/root/scenario-test/entry-point.sh"]
+CMD ["test"]
