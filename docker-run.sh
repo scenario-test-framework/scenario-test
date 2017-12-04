@@ -9,7 +9,9 @@ function local.start(){
   # /tmpにリソースをコピーし、コピーしたリソースでビルド&テスト
   DATE=$(date "+%Y%m%d_%H%M%S")
   mkdir -p /tmp/scenario-data.$DATE
-  cp -R ./* /tmp/scenario-data.$DATE
+  cp -R ./src /tmp/scenario-data.$DATE
+  cp -R ./pom.xml /tmp/scenario-data.$DATE
+  cp -R ./entry-point.sh /tmp/scenario-data.$DATE
   docker run --rm -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
   exit $?
 }
