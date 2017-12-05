@@ -15,22 +15,31 @@ RUN apk add                        \
     firefox-esr                    \
     dbus
 # chromeはうまく動作しない...
-#    chromium                       \
-#    chromium-chromedriver          \
-#    udev                           \
-#    ttf-freefont
+    chromium                       \
+    chromium-chromedriver          \
+    udev                           \
+    ttf-freefont
+
+# notofu font
+RUN mkdir /noto
+ADD https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip /noto 
+WORKDIR /noto
+RUN unzip NotoSansCJKjp-hinted.zip && \
+    mkdir -p /usr/share/fonts/noto && \
+    cp *.otf /usr/share/fonts/noto && \
+    chmod 644 -R /usr/share/fonts/noto/ && \
+    fc-cache -fv
+WORKDIR /
+RUN rm -rf /noto
+
 
 # pomのみの状態でビルドし、ローカルリポジトリに依存ファイルダウンロード
 RUN mkdir -p ~/scenario-test
 COPY ./pom.xml /root/scenario-test
-RUN cd ~/scenario-test && \
-    mvn test
+COPY ./entry-point.sh /root/scenario-test
+RUN chmod +x /root/scenario-test/entry-point.sh && \
+    /root/scenario-test/entry-point.sh init
 
 # 仮想フレームバッファ(xvfb)起動＆テスト実行
-CMD export DISPLAY=:99 && \
-    ( Xvfb :99 & ) && \
-    umask 0000 && \
-    cd ~/scenario-test && \
-    mvn clean test
-
-
+ENTRYPOINT ["/root/scenario-test/entry-point.sh"]
+CMD ["test"]

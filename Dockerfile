@@ -15,6 +15,7 @@ RUN apt-get install -y             \
 RUN curl -o ~/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     apt install -y ~/google-chrome-stable_current_amd64.deb
 RUN apt install -y firefox-esr
+RUN apt install -y task-japanese
 
 
 # pomのみの状態でビルドし、ローカルリポジトリに依存ファイルダウンロード
