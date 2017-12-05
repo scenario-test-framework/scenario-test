@@ -2,6 +2,9 @@
 # 注 dockerの利用には、 root 権限が必要かもしれません。
 
 export VERSION=0.0.1
+DOCKERFILE=Dockerfile
+#DOCKERFILE=Dockerfile.alpine
+#CACHE=--no-cache
 
 function local.start(){
   local.stop
@@ -26,8 +29,7 @@ function local.logs(){
 function local.update(){
   # dockerイメージ更新
   local.stop
-  #docker build --no-cache -t scenario-test:$VERSION .
-  docker build -t scenario-test:$VERSION .
+  docker build -f $DOCKERFILE $CACHE -t scenario-test:$VERSION .
 }
 function local.ps(){
   docker ps

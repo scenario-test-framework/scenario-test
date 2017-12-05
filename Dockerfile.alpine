@@ -11,11 +11,11 @@ RUN apk add                        \
     xvfb                           \
     maven                          \
     git                            \
-    bash                           \
-    firefox-esr                    \
+    bash
+RUN apk add firefox-esr            \
     dbus
 # chromeはうまく動作しない...
-    chromium                       \
+RUN apk add chromium               \
     chromium-chromedriver          \
     udev                           \
     ttf-freefont
