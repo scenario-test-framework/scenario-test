@@ -3,15 +3,15 @@ Feature: SwaggerEditorでgitユーザの管理を行いたい。
 
 Scenario:ユーザの登録
  Given "http://192.168.128.99:9700/editor" URLを開く
- When "10_editor" スクリーンショットをとる
- When "ace-editor" に "#これは\n#コメントです\n" を入力する
- When "11_editorarea" 部品 "pane1" のスクリーンショットをとる
- When "12_apiarea" 部品 "pane2" のスクリーンショットをとる
- When "User:" をクリックする
-  And "Add User" をクリックする
- Then "Add User" ダイアログが表示される
- When "id:" に "test" を入力する
-  And "email:" に "test@example.com" を入力する
- When "20_Add User" スクリーンショットをとる
- When "Create" をクリックする
+  When "10_editor" スクリーンショットをとる
+  When "ace-editor" に "#これは\n#コメントです\n" を入力する
+  When "11_editorarea" 部品 "pane1" のスクリーンショットをとる
+  When "12_apiarea" 部品 "pane2" のスクリーンショットをとる
+  When "User:" をクリックする
+   And "Add User" をクリックする
+  Then "Add User" ダイアログが表示される
+  When "id:" に "test" を入力する
+   And "email:" に "test@example.com" を入力する
+  When "20_Add User" スクリーンショットをとる
+  When "Create" をクリックする
 

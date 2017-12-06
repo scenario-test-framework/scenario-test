@@ -8,11 +8,13 @@ init)
     RET=$?
     ;;
 test)
-    export DISPLAY=:99 && 
-    ( Xvfb :99 & ) && 
+# gridを利用しない場合、仮想fb上に画面描画する	
+#    export DISPLAY=:99 && 
+#    ( Xvfb :99 & ) && 
     umask 0000 && 
     cd ~/scenario-test && 
-    mvn clean test
+    #mvn -Dselenide.browser=chrome -Dremote=http://192.168.128.99:4444/wd/hub clean test
+    mvn -Dselenide.browser=firefox -Dremote=http://192.168.128.99:4444/wd/hub clean test
     RET=$?
     ;;
 shell)
