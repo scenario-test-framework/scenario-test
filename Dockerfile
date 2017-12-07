@@ -1,25 +1,22 @@
 # scenario-test-framework
 #---------------------------------------------------------------------
-# テスト実施は selenium-grid
-#---------------------------------------------------------------------
 
-FROM openjdk:8-jdk
+FROM alpine:edge
 
-# chromeとfirefoxのインストール
-RUN apt-get update -y
-RUN apt-get install -y             \
-    maven
+# コンパイル環境インストール
+RUN apk update
+RUN apk add                        \
+    openjdk8                       \
+    maven                          \
+    bash
 
-# pomのみの状態でビルドし、ローカルリポジトリに依存ファイルダウンロード
+# 初回ビルド
 RUN mkdir -p ~/scenario-test
 COPY ./pom.xml /root/scenario-test
 COPY ./entry-point.sh /root/scenario-test
 RUN chmod +x /root/scenario-test/entry-point.sh && \
     /root/scenario-test/entry-point.sh init
 
-RUN apt-get clean               && \
-    rm -rf /var/lib/apt/lists/*
-
-# テスト実行
+# ビルド・テスト実行
 ENTRYPOINT ["/root/scenario-test/entry-point.sh"]
 CMD ["test"]

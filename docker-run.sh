@@ -16,7 +16,11 @@ function local.start(){
   cp -R ./pom.xml /tmp/scenario-data.$DATE
   cp -R ./entry-point.sh /tmp/scenario-data.$DATE
   docker run --rm -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
-  exit $?
+  RET=$?
+  mkdir -p ../scenario-data.$DATE
+  cp -R /tmp/scenario-data.$DATE/build/* ../scenario-data.$DATE
+  cp -R /tmp/scenario-data.$DATE/target/surefire-reports/* ../scenario-data.$DATE
+  exit $RET
 }
 function local.stop(){
   # 停止＆イメージ削除
