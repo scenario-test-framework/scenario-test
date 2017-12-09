@@ -15,10 +15,12 @@ function local.start(){
   cp -R ./src /tmp/scenario-data.$DATE
   cp -R ./pom.xml /tmp/scenario-data.$DATE
   cp -R ./entry-point.sh /tmp/scenario-data.$DATE
-  docker run --rm -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
+  docker run --rm --network test_bridge -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
   RET=$?
-  mkdir -p ../scenario-data.$DATE
-  cp -R /tmp/scenario-data.$DATE/build/* ../scenario-data.$DATE
+  mkdir -p ../scenario-data.$DATE/build
+  if [ -d /tmp/scenario-data.$DATE/build ]; then
+    cp -R /tmp/scenario-data.$DATE/build/* ../scenario-data.$DATE/build
+  fi
   cp -R /tmp/scenario-data.$DATE/target/surefire-reports/* ../scenario-data.$DATE
   exit $RET
 }
