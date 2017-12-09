@@ -13,8 +13,8 @@ test)
 #    ( Xvfb :99 & ) && 
     umask 0000 && 
     cd ~/scenario-test && 
-    #mvn -Dselenide.browser=chrome -Dremote=http://hub:4444/wd/hub clean test
-    mvn -Dselenide.browser=firefox -Dremote=http://hub:4444/wd/hub clean test
+    mvn -Dselenide.browser=chrome -Dremote=http://hub:4444/wd/hub clean test
+    #mvn -Dselenide.browser=firefox -Dremote=http://hub:4444/wd/hub clean test
     RET=$?
     ;;
 shell)

@@ -6,17 +6,11 @@ services:
       - "4444:4444"
     networks:
       - test_bridge
-  in-house-swagger:
-    image: in-house-swagger:0.5.0-SNAPSHOT
-    ports:
-      - "9700:9700"
-      - "9701:9701"
-    networks:
-      - test_bridge
+
   node-chrome:
     build:
       context: "."
-      dockerfile: "Dockerfile.node-chrome-ja"
+      dockerfile: "Dockerfile.node-chrome-ja" # 日本語フォントカスタマイズ
     depends_on:
       - hub
     environment:
@@ -26,10 +20,11 @@ services:
       - /dev/shm:/dev/shm # Mitigates the Chromium issue described at https://code.google.com/p/chromium/issues/detail?id=519952
     networks:
       - test_bridge
+
   node-firefox:
     build:
       context: "."
-      dockerfile: "Dockerfile.node-firefox-ja"
+      dockerfile: "Dockerfile.node-firefox-ja" # 日本語フォントカスタマイズ
     depends_on:
       - hub
     environment:
@@ -37,5 +32,13 @@ services:
       - HUB_PORT_4444_TCP_PORT=4444
     networks:
       - test_bridge
+
+  in-house-swagger:
+    image: in-house-swagger:0.5.0-SNAPSHOT # https://github.com/in-house-swagger/in-house-swagger
+    ports:
+      - "9700:9700"
+      - "9701:9701"
+    networks:
+      - test_bridge
 networks:
-  test_bridge:
+  test_bridge: # 他のコンテナからは、{ディレクトリ名}_test_bridge でアクセスできる。
