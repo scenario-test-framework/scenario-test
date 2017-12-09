@@ -6,6 +6,13 @@ services:
       - "4444:4444"
     networks:
       - test_bridge
+  in-house-swagger:
+    image: in-house-swagger:0.5.0-SNAPSHOT
+    ports:
+      - "9700:9700"
+      - "9701:9701"
+    networks:
+      - test_bridge
   node-chrome:
     build:
       context: "."
