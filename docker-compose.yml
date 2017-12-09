@@ -39,4 +39,3 @@ services:
       - test_bridge
 networks:
   test_bridge:
-    external: true

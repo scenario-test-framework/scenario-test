@@ -15,7 +15,7 @@ function local.start(){
   cp -R ./src /tmp/scenario-data.$DATE
   cp -R ./pom.xml /tmp/scenario-data.$DATE
   cp -R ./entry-point.sh /tmp/scenario-data.$DATE
-  docker run --rm --network test_bridge -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
+  docker run --rm --network scenariotest_test_bridge -v /tmp/scenario-data.$DATE:/root/scenario-test --name scenario-test scenario-test:$VERSION
   RET=$?
   mkdir -p ../scenario-data.$DATE/build
   if [ -d /tmp/scenario-data.$DATE/build ]; then
