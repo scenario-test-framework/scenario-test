@@ -3,18 +3,14 @@
 RET=-1
 case "$1" in
 init)
-    cd ~/scenario-test && 
-    mvn test
-    RET=$?
+    RET=0
     ;;
 test)
-# gridを利用しない場合、仮想fb上に画面描画する	
-#    export DISPLAY=:99 && 
-#    ( Xvfb :99 & ) && 
+    TAGET=chrome # or firefox
     umask 0000 && 
     cd ~/scenario-test && 
-    mvn -Dselenide.browser=chrome -Dremote=http://hub:4444/wd/hub clean test
-    #mvn -Dselenide.browser=firefox -Dremote=http://hub:4444/wd/hub clean test
+    java -Djava.awt.headless=true -Dselenide.browser=${TAGET} -Dremote=http://hub:4444/wd/hub -cp './scenario-test-0.0.1-SNAPSHOT-jar-with-dependencies.jar' cucumber.api.cli.Main  src/main/resources/ --glue scenario.test
+
     RET=$?
     ;;
 shell)

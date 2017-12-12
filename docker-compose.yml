@@ -1,0 +1,13 @@
+version: '3'
+services:
+  scenario-test:
+    build:
+      context: "."
+      dockerfile: "Dockerfile"
+    volumes:
+      - /tmp/scenario-data:/root/scenario-test
+
+networks:
+  default:
+    external:
+      name: runtimeenv_test_bridge
