@@ -4,7 +4,7 @@
 export VERSION=0.0.1
 
 function local.start(){
-  JAR=./screenTestProj/target/scenario-test-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+  JAR=./screenTestProj/target/screenTestProj-0.0.1-SNAPSHOT-jar-with-dependencies.jar
   if [ ! -f $JAR ]; then
     echo "cd screenTestProj;mvn package"
     exit 2

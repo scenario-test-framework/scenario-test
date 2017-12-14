@@ -33,11 +33,25 @@ services:
     networks:
       - test_bridge
 
-  in-house-swagger:
-    image: in-house-swagger:0.5.0-SNAPSHOT # https://github.com/in-house-swagger/in-house-swagger
+#  in-house-swagger:
+#    image: in-house-swagger:0.5.0-SNAPSHOT # https://github.com/in-house-swagger/in-house-swagger
+#    ports:
+#      - "9700:9700"
+#      - "9701:9701"
+#    networks:
+#      - test_bridge
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    restart: always
+    hostname: 'gitlab'
     ports:
-      - "9700:9700"
-      - "9701:9701"
+      - "443:443"
+      - "80:80"
+      - "8022:22"
+    volumes:
+      - '/srv/gitlab/config:/etc/gitlab'
+      - '/srv/gitlab/logs:/var/log/gitlab'
+      - '/srv/gitlab/data:/var/opt/gitlab'
     networks:
       - test_bridge
 networks:
