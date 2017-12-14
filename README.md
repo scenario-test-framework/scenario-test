@@ -1,17 +1,11 @@
 
-■テスト対象サービス準備
+■selenium grid環境、実行環境作成・起動
 
-1. テスト対象サービスセットアップ(イメージのビルドまで)
-
-  https://github.com/in-house-swagger/in-house-swagger
-
-■selenium grid環境作成・起動
-
-1. selenium grid環境イメージ作成
+1. selenium grid環境、実行環境イメージ作成
 
   sudo docker-compose build
 
-2. selenium grid環境起動
+2. selenium grid環境、実行環境起動
 
   sudo docker-compose -f runtime_env/docker-compose.yml up -d
 
@@ -25,7 +19,7 @@
 
   sudo ./docker-run.sh update
 
-2. src内のソースをもとにコンパイル＆テスト実行
+2. src内のソースをもとにテスト実行
 
   sudo ./docker-run.sh start
 
