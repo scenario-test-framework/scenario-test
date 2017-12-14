@@ -13,7 +13,7 @@ public class GitlabSteps {
         if (arg1.endsWith("/users/sign_in")) {
             currentPage = new GitlabLoginPage(arg1);
         } else {
-            currentPage = new GitlabProjectPage();
+            currentPage = new GitlabProjectPage(arg1);
         }
     }
 
@@ -49,5 +49,8 @@ public class GitlabSteps {
         currentPage.input(arg1,arg2);
     }
 
-
+    @When("^\"([^\"]*)\" リンクをクリックする$")
+    public void リンクをクリックする(String arg1) throws Throwable {
+        currentPage = currentPage.searchAndClick(arg1);
+    }
 }

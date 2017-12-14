@@ -29,7 +29,7 @@ public abstract class PageObj {
         Screenshot shot = new AShot()
                           .shootingStrategy(ShootingStrategies.viewportPasting(100))
                           .takeScreenshot(WebDriverRunner.getWebDriver());
-        File f = new File("build/reports/tests/scenario/test/" + GitlabLoginPage.class.getSimpleName() + "_" + label + ".png") ;
+        File f = new File("build/reports/tests/scenario/test/" + label + "_" + this.getClass().getSimpleName() + ".png") ;
         f.mkdirs();
         ImageIO.write(shot.getImage(), "png",f);
     }
@@ -48,7 +48,7 @@ public abstract class PageObj {
                                 By.cssSelector(elementCss).findElement(WebDriverRunner.getWebDriver()));
         BufferedImage image = shot.getImage();
 
-        File file = new File("build/reports/tests/scenario/test/" + GitlabLoginPage.class.getSimpleName() + "_" + label + ".png") ;
+        File file = new File("build/reports/tests/scenario/test/" + label + "_" + this.getClass().getSimpleName()  + ".png") ;
         file.mkdirs();
         ImageIO.write(image, "png",file);
     }
@@ -60,8 +60,34 @@ public abstract class PageObj {
     }
 
     public PageObj click(String label) {
+//        PageObj page = this;
+//        String elementCss = null;
+//        if ("Sign in".equals(label)) {
+//            elementCss = "#new_user > div.submit-container.move-submit-down > input";
+//            page = new GitlabProjectPage();
+//        } else if ("Sign in tab".equals(label)) {
+//            elementCss = "body > div > div.container.navless-container > div > div.row > div.col-sm-5.pull-right.new-session-forms-container > div > ul > li:nth-child(1) > a";
+//        } else if ("Register tab".equals(label)) {
+//            elementCss = "body > div > div.container.navless-container > div > div.row > div.col-sm-5.pull-right.new-session-forms-container > div > ul > li:nth-child(2) > a";
+//        } else {
+//            throw new RuntimeException("No Such Element");
+//        }
+//        $(By.cssSelector(elementCss)).click();
+//        return page;
         throw new RuntimeException("No Such Label");
     }
+
+    public void input(String label, String value) {
+//        if ("Username or email".equals(label)) {
+//            $(By.cssSelector("#user_login")).setValue(value);
+//        } else if ("Password".equals(label)) {
+//            $(By.cssSelector("#user_password")).setValue(value);
+//        } else {
+//            throw new RuntimeException("No Such Label");
+//        }
+        throw new RuntimeException("No Such Label");
+    }
+
     public void checkDialog(String title) {
 // example
 //        if ("Add User".equals(title)) {
@@ -71,9 +97,7 @@ public abstract class PageObj {
 //        }
         throw new RuntimeException("No Such Title");
     }
-    public void input(String label, String value) {
-        throw new RuntimeException("No Such Label");
-    }
+
     public void elementScreenshot(String elementName, String label) throws Exception{
 // example
 //        String elementCss = null;
@@ -87,4 +111,13 @@ public abstract class PageObj {
 //        _elementScreenshot(elementCss, label);
         throw new RuntimeException("No Such Element");
     }
+
+
+    /**
+     * @param label
+     */
+    public PageObj searchAndClick(String label) {
+        throw new RuntimeException("No Such Label");
+    }
+
 }
