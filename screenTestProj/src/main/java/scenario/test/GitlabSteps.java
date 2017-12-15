@@ -48,6 +48,10 @@ public class GitlabSteps {
     public void に_を入力する(String arg1, String arg2) throws Throwable {
         currentPage.input(arg1,arg2);
     }
+    @When("^\"([^\"]*)\" に以下を入力する:$")
+    public void に以下を入力する(String arg1, String arg2) throws Throwable {
+        currentPage.input(arg1,arg2);
+    }
 
     @When("^\"([^\"]*)\" リンクをクリックする$")
     public void リンクをクリックする(String arg1) throws Throwable {

@@ -27,6 +27,7 @@ public class GitlabProjectPage extends PageObj {
             elementCss = "#content-body > div > div > div > div > div > div.blank-state-row > a:nth-child(1)";
         } else if ("Create project".equals(label)) {
             elementCss = "#new_project > input.btn.btn-create.project-submit";
+            page = new GitlabProjectDetailPage();
         } else if ("Private".equals(label)) {
             elementCss = "#new_project > div.form-group.visibility-level-setting > div > div > div:nth-child(1) > label > div.option-title";
         } else if ("Internal".equals(label)) {

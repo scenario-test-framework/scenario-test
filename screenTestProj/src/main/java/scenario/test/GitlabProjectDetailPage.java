@@ -17,18 +17,21 @@ public class GitlabProjectDetailPage extends PageObj {
     public PageObj click(String label) {
         PageObj page = this;
         String elementCss = null;
-        if ("Settings".equals(label)) {
-            elementCss = "body > div.page-with-contextual-sidebar.page-with-sidebar.right-sidebar-collapsed > div.nav-sidebar > div > ul > li:nth-child(7) > a";
-        } else if ("Remove project".equals(label)) {
+        if ("Remove project".equals(label)) {
             elementCss = "#content-body > div.container-fluid.container-limited > div.empty_wrapper > div > fieldset:nth-child(4) > div > a";
             page = new GitlabProjectPage();
+        } else if ("Issues".equals(label)) {
+            elementCss = "body > div.page-with-contextual-sidebar > div.nav-sidebar > div > ul > li:nth-child(2) > a";
+            page = new GitlabProjectIssuePage();
         } else {
             throw new RuntimeException("No Such Label");
         }
         $(By.cssSelector(elementCss)).click();
         if ("Remove project".equals(label)) {
+            // alertダイアログの場合、特別な処理が必要
             Selenide.switchTo().alert().accept();
         }
+
         return page;
     }
 
