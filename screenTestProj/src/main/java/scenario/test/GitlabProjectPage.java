@@ -47,8 +47,11 @@ public class GitlabProjectPage extends PageObj {
     public PageObj searchAndClick(String label) {
         PageObj page = this;
         SelenideElement elm = $(By.linkText(label));
+        String attr =elm.getAttribute("class");
         elm.click();
-        page = new GitlabProjectDetailPage();
+        if ("project".equals(attr)) {
+            page = new GitlabProjectDetailPage();
+        }
         return page;
     }
 

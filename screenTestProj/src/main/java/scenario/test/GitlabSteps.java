@@ -4,19 +4,17 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+/**
+ * cucumber steps
+ */
 public class GitlabSteps {
 
-    PageObj currentPage;
+    GitlabCurrentPageControl currentPage = new GitlabCurrentPageControl();
 
     @Given("^\"([^\"]*)\" URLを開く$")
     public void URLを開く(String arg1) throws Throwable {
-        if (arg1.endsWith("/users/sign_in")) {
-            currentPage = new GitlabLoginPage(arg1);
-        } else {
-            currentPage = new GitlabProjectPage(arg1);
-        }
+        currentPage.openURL(arg1);
     }
-
 
     @Then("^\"([^\"]*)\" ページであること$")
     public void ページであること(String arg1) throws Throwable {
@@ -28,7 +26,6 @@ public class GitlabSteps {
         currentPage.screenshot(arg1);
     }
 
-
     @When("^\"([^\"]*)\" 部品 \"([^\"]*)\" のスクリーンショットをとる$")
     public void 部品_のスクリーンショットをとる(String arg1, String arg2) throws Throwable {
         currentPage.elementScreenshot(arg1,arg2);
@@ -36,7 +33,7 @@ public class GitlabSteps {
 
     @When("^\"([^\"]*)\" をクリックする$")
     public void をクリックする(String arg1) throws Throwable {
-        currentPage = currentPage.click(arg1);
+        currentPage.click(arg1);
     }
 
     @Then("^\"([^\"]*)\" ダイアログが表示される$")
@@ -55,6 +52,7 @@ public class GitlabSteps {
 
     @When("^\"([^\"]*)\" リンクをクリックする$")
     public void リンクをクリックする(String arg1) throws Throwable {
-        currentPage = currentPage.searchAndClick(arg1);
+        currentPage.searchAndClick(arg1);
     }
+
 }

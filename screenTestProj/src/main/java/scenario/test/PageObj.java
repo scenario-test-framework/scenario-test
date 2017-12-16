@@ -15,7 +15,7 @@ import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
-public abstract class PageObj {
+public class PageObj {
 
     public PageObj() {
         super();
@@ -55,11 +55,12 @@ public abstract class PageObj {
 
     public void is(String title) {
         if (!Selenide.title().equals(title)) {
-            throw new RuntimeException("No Such Title");
+            throw new RuntimeException("No Such Title:" + this.getClass().getSimpleName());
         }
     }
 
     public PageObj click(String label) {
+// example
 //        PageObj page = this;
 //        String elementCss = null;
 //        if ("Sign in".equals(label)) {
@@ -74,10 +75,11 @@ public abstract class PageObj {
 //        }
 //        $(By.cssSelector(elementCss)).click();
 //        return page;
-        throw new RuntimeException("No Such Label");
+        throw new RuntimeException("No Such Label:" + this.getClass().getSimpleName());
     }
 
     public void input(String label, String value) {
+// example
 //        if ("Username or email".equals(label)) {
 //            $(By.cssSelector("#user_login")).setValue(value);
 //        } else if ("Password".equals(label)) {
@@ -85,7 +87,7 @@ public abstract class PageObj {
 //        } else {
 //            throw new RuntimeException("No Such Label");
 //        }
-        throw new RuntimeException("No Such Label");
+        throw new RuntimeException("No Such Label:" + this.getClass().getSimpleName());
     }
 
     public void checkDialog(String title) {
@@ -95,7 +97,7 @@ public abstract class PageObj {
 //        } else {
 //            throw new RuntimeException("No Such Title");
 //        }
-        throw new RuntimeException("No Such Title");
+        throw new RuntimeException("No Such Title:" + this.getClass().getSimpleName());
     }
 
     public void elementScreenshot(String elementName, String label) throws Exception{
@@ -109,15 +111,20 @@ public abstract class PageObj {
 //            throw new RuntimeException("No Such Element");
 //        }
 //        _elementScreenshot(elementCss, label);
-        throw new RuntimeException("No Such Element");
+        throw new RuntimeException("No Such Element:" + this.getClass().getSimpleName());
     }
 
-
-    /**
-     * @param label
-     */
     public PageObj searchAndClick(String label) {
-        throw new RuntimeException("No Such Label");
+// example
+//        PageObj page = this;
+//        SelenideElement elm = $(By.linkText(label));
+//        String attr =elm.getAttribute("class");
+//        elm.click();
+//        if ("project".equals(attr)) {
+//            page = new GitlabProjectDetailPage();
+//        }
+//        return page;
+        throw new RuntimeException("No Such Label:" + this.getClass().getSimpleName());
     }
 
 }
