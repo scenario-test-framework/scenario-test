@@ -8,6 +8,7 @@ services:
     volumes:
       - ./dockerfiles/dev/entry-point.sh:/root/scenario-test/entry-point.sh
       - ./screenTestProj/src:/root/scenario-test/src
+      - ./screenTestProj/pom.xml:/root/scenario-test/pom.xml
       - ./screenTestProj/target:/root/scenario-test/target
       - ../scenario-data:/root/scenario-test/build
 

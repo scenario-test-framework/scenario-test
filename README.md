@@ -3,7 +3,7 @@
 
 1. selenium grid環境、実行環境イメージ作成
 
-  sudo docker-compose build
+  sudo docker-compose -f runtile_env/docker-compose.yml build
 
 2. selenium grid環境、実行環境起動
 
@@ -17,11 +17,16 @@
 
 1. 実行環境dockerイメージ作成
 
-  sudo ./docker-run.sh update
+  sudo docker-compose build
 
-2. src内のソースをもとにテスト実行
+2. src内のソースをビルド(jdk/maven)
 
-  sudo ./docker-run.sh start
+  cd screenTestProj
+  ./build.sh
+
+3. src内のソースをもとにテスト実行
+
+  sudo docker-compose up
 
 ■selenium grid環境を停止する場合
 

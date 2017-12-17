@@ -6,7 +6,8 @@ FROM openjdk:8-jre-alpine
 # 環境インストール
 RUN apk update
 RUN apk add                        \
-    bash
+    bash \
+    maven
 
 RUN mkdir -p ~/scenario-test
 COPY ./dockerfiles/dev/entry-point.sh /root/scenario-test
