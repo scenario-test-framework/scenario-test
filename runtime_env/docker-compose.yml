@@ -2,6 +2,7 @@ version: '3'
 services:
   hub:
     image: selenium/hub
+    restart: always
     ports:
       - "4444:4444"
     networks:
@@ -11,6 +12,7 @@ services:
     build:
       context: "."
       dockerfile: "Dockerfile.node-chrome-ja" # 日本語フォントカスタマイズ
+    restart: always
     depends_on:
       - hub
     environment:
@@ -25,6 +27,7 @@ services:
     build:
       context: "."
       dockerfile: "Dockerfile.node-firefox-ja" # 日本語フォントカスタマイズ
+    restart: always
     depends_on:
       - hub
     environment:

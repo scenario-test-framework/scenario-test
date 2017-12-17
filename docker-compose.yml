@@ -1,11 +1,15 @@
+# 事前に build.sh でlibが作成されていること
 version: '3'
 services:
   scenario-test:
     build:
       context: "."
-      dockerfile: "Dockerfile"
+      dockerfile: "dockerfiles/dev/Dockerfile"
     volumes:
-      - /tmp/scenario-data:/root/scenario-test
+      - ./dockerfiles/dev/entry-point.sh:/root/scenario-test/entry-point.sh
+      - ./screenTestProj/src:/root/scenario-test/src
+      - ./screenTestProj/target:/root/scenario-test/target
+      - ../scenario-data:/root/scenario-test/build
 
 networks:
   default:
