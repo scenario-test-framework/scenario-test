@@ -37,7 +37,7 @@ Scenario: issue変更
 
   When "Issues" をクリックする
    And "てすといしゅー" リンクをクリックする
-   And "210_010_issue" スクリーンショットをとる
+   And "200_050_issue" スクリーンショットをとる
    And "Edit" をクリックする
    And "Edit title" に "てすといしゅー変更" を入力する
    And "Edit description" に以下を入力する:
@@ -47,6 +47,6 @@ Scenario: issue変更
    ***いしゅー***変更です。
    """
 
-   And "210_020_issue_pre_edit" スクリーンショットをとる
+   And "200_060_issue_pre_edit" スクリーンショットをとる
    And "Save changes" をクリックする
-   And "210_030_issue_save_changes" スクリーンショットをとる
+   And "200_070_issue_save_changes" スクリーンショットをとる
