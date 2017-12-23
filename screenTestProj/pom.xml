@@ -51,6 +51,11 @@
           <descriptorRefs>
             <descriptorRef>jar-with-dependencies</descriptorRef>
           </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>cucumber.api.cli.Main</mainClass>
+            </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
