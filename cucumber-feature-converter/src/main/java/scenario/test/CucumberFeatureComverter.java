@@ -16,8 +16,14 @@ public class CucumberFeatureComverter {
     public static void main(String[] args) {
 
         CucumberFeatureComverter converter = new CucumberFeatureComverter();
-        converter.setInputPath(new File(args[0]));
-        converter.setOutputPath(new File(args[1]));
+
+        if (args.length>0)
+            converter.setInputPath(new File(args[0]));
+        if (args.length>1)
+            converter.setOutputPath(new File(args[1]));
+        if (args.length>2)
+            converter.setDataPath(new File(args[2]));
+
         converter.searchFeatureAndConvert();
     }
 
