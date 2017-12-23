@@ -1,4 +1,4 @@
-package scenario.test;
+package scenario.test.page;
 
 /**
  * current page control

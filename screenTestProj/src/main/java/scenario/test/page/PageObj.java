@@ -1,4 +1,4 @@
-package scenario.test;
+package scenario.test.page;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

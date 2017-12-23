@@ -1,10 +1,12 @@
-package scenario.test;
+package scenario.test.page;
 
 import static com.codeborne.selenide.Selenide.*;
 
 import org.openqa.selenium.By;
 
 import com.codeborne.selenide.SelenideElement;
+
+import scenario.test.page.GitlabProjectDetailPage;
 
 public class GitlabProjectPage extends PageObj {
 

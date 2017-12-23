@@ -11,7 +11,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 public class ScreenTest {
     @BeforeClass
-    public static void before() {
+    public static void before() throws Exception {
         Configuration.browser = WebDriverRunner.CHROME;
     }
 }

@@ -1,40 +1,36 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>scenario-test</groupId>
-  <artifactId>screenTestProj</artifactId>
+  <groupId>scenario</groupId>
+  <artifactId>cucumber-feature-converter</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>cucumber-feature-converter</name>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
     <dependency>
-      <groupId>com.codeborne</groupId>
-      <artifactId>selenide</artifactId>
-      <version>4.8</version>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>2.3.1</version>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-junit</artifactId>
-      <version>2.3.1</version>
-    </dependency>
-    <dependency>
-      <groupId>ru.yandex.qatools.ashot</groupId>
-      <artifactId>ashot</artifactId>
-      <version>1.5.2</version>
+      <groupId>com.opencsv</groupId>
+      <artifactId>opencsv</artifactId>
+      <version>4.1</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/junit/junit -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>3.0.0</version>
@@ -55,5 +51,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

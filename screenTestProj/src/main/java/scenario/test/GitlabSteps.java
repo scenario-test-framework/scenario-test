@@ -3,6 +3,7 @@ package scenario.test;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import scenario.test.page.GitlabCurrentPageControl;
 
 /**
  * cucumber steps
@@ -54,5 +55,6 @@ public class GitlabSteps {
     public void リンクをクリックする(String arg1) throws Throwable {
         currentPage.searchAndClick(arg1);
     }
+
 
 }
