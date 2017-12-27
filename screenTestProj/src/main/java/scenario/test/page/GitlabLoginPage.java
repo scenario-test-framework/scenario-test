@@ -37,7 +37,7 @@ public class GitlabLoginPage extends PageObj {
      * @param label
      * @param value
      */
-    public void input(String label, String value) {
+    public PageObj input(String label, String value) {
         if ("Username or email".equals(label)) {
             $(By.cssSelector("#user_login")).setValue(value);
         } else if ("Password".equals(label)) {
@@ -45,6 +45,7 @@ public class GitlabLoginPage extends PageObj {
         } else {
             throw new RuntimeException("No Such Label");
         }
+        return this;
     }
 
 }

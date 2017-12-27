@@ -39,12 +39,13 @@ public class GitlabProjectDetailPage extends PageObj {
      * @param label
      * @param value
      */
-    public void input(String label, String value) {
+    public PageObj input(String label, String value) {
         if ("Confirm input".equals(label)) {
             $(By.cssSelector("#confirm_name_input")).setValue(value);
         } else {
             throw new RuntimeException("No Such Label");
         }
+        return this;
     }
 
 }

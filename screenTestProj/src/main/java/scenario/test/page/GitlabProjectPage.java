@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 
 import com.codeborne.selenide.SelenideElement;
 
-import scenario.test.page.GitlabProjectDetailPage;
-
 public class GitlabProjectPage extends PageObj {
 
     public GitlabProjectPage() {
@@ -61,7 +59,7 @@ public class GitlabProjectPage extends PageObj {
      * @param label
      * @param value
      */
-    public void input(String label, String value) {
+    public PageObj input(String label, String value) {
         if ("Project name".equals(label)) {
             $(By.cssSelector("#project_path")).setValue(value);
         } else if ("Project description".equals(label)) {
@@ -69,6 +67,7 @@ public class GitlabProjectPage extends PageObj {
         } else {
             throw new RuntimeException("No Such Label");
         }
+        return this;
     }
 
 }

@@ -23,8 +23,8 @@ Scenario Outline: issue連続作成
    And <ScreenShotName> スクリーンショットをとる
 
  Examples:
+   #csv://data.csv
    |IssueTitle  |IssueDescription|Due Date     |ScreenShotName             |
-   #csv://../../data.csv
    |"a"|てすと１|"2018-01-01"|"d"|
    |"b"|てすと２|"2018-01-01"|"d"|
    |"c"|てすと３|"2018-01-01"|"d"|

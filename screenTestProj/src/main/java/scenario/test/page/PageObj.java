@@ -53,10 +53,11 @@ public class PageObj {
         ImageIO.write(image, "png",file);
     }
 
-    public void is(String title) {
+    public PageObj is(String title) {
         if (!Selenide.title().equals(title)) {
             throw new RuntimeException("No Such Title:" + this.getClass().getSimpleName());
         }
+        return this;
     }
 
     public PageObj click(String label) {
@@ -78,8 +79,9 @@ public class PageObj {
         throw new RuntimeException("No Such Label:" + this.getClass().getSimpleName());
     }
 
-    public void input(String label, String value) {
+    public PageObj input(String label, String value) {
 // example
+//        PageObj page = this;
 //        if ("Username or email".equals(label)) {
 //            $(By.cssSelector("#user_login")).setValue(value);
 //        } else if ("Password".equals(label)) {
@@ -87,16 +89,19 @@ public class PageObj {
 //        } else {
 //            throw new RuntimeException("No Such Label");
 //        }
+//        return page;
         throw new RuntimeException("No Such Label:" + this.getClass().getSimpleName());
     }
 
-    public void checkDialog(String title) {
+    public PageObj checkDialog(String title) {
 // example
+//        PageObj page = this;
 //        if ("Add User".equals(title)) {
 //            $(By.cssSelector("#swagger-editor > div > div:nth-child(1) > div.topbar > div > div.topbar-specmgr-info > span:nth-child(5) > div.swagger-ui > div > div > div > div > div > div.modal-ux-header > h3")).shouldHave(new Text(title));
 //        } else {
 //            throw new RuntimeException("No Such Title");
 //        }
+//        return page;
         throw new RuntimeException("No Such Title:" + this.getClass().getSimpleName());
     }
 

@@ -37,7 +37,7 @@ public class GitlabProjectIssuePage extends PageObj {
      * @param label
      * @param value
      */
-    public void input(String label, String value) {
+    public PageObj input(String label, String value) {
         if ("Title".equals(label)) {
             $(By.cssSelector("#issue_title")).setValue(value);
         } else if ("Description".equals(label)) {
@@ -53,6 +53,7 @@ public class GitlabProjectIssuePage extends PageObj {
         } else {
             throw new RuntimeException("No Such Label");
         }
+        return this;
     }
 
     public PageObj searchAndClick(String label) {

@@ -15,10 +15,6 @@ public class GitlabCurrentPageControl {
         }
     }
 
-    public void is(String arg1) throws Throwable {
-        currentPage.is(arg1);
-    }
-
     public void screenshot(String arg1) throws Throwable {
         currentPage.screenshot(arg1);
     }
@@ -27,17 +23,21 @@ public class GitlabCurrentPageControl {
         currentPage.elementScreenshot(arg1,arg2);
     }
 
+    public void is(String arg1) throws Throwable {
+        currentPage = currentPage.is(arg1);
+    }
+
     public void click(String arg1) throws Throwable {
         // window タイトル or urlをもとに現在ページを決定すべきか...
         currentPage = currentPage.click(arg1);
     }
 
     public void checkDialog(String arg1) throws Throwable {
-        currentPage.checkDialog(arg1);
+        currentPage = currentPage.checkDialog(arg1);
     }
 
     public void input(String arg1, String arg2) throws Throwable {
-        currentPage.input(arg1,arg2);
+        currentPage = currentPage.input(arg1,arg2);
     }
 
     public void searchAndClick(String arg1) throws Throwable {
