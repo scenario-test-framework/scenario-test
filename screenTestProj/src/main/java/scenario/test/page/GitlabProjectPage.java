@@ -49,9 +49,9 @@ public class GitlabProjectPage extends PageObj {
         SelenideElement elm = $(By.linkText(label));
         String attr =elm.getAttribute("class");
         elm.click();
-        if ("project".equals(attr)) {
+        if ("text-plain".equals(attr)) {
             page = new GitlabProjectDetailPage();
-        }
+         }
         return page;
     }
 

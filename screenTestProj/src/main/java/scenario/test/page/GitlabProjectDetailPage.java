@@ -21,7 +21,7 @@ public class GitlabProjectDetailPage extends PageObj {
             elementCss = "#content-body > div.container-fluid.container-limited > div.empty_wrapper > div > fieldset:nth-child(4) > div > a";
             page = new GitlabProjectPage();
         } else if ("Issues".equals(label)) {
-            elementCss = "body > div.page-with-contextual-sidebar > div.nav-sidebar > div > ul > li:nth-child(2) > a";
+            elementCss = "body > div.layout-page.page-with-contextual-sidebar > div.nav-sidebar > div > ul > li:nth-child(2) > a";
             page = new GitlabProjectIssuePage();
         } else {
             throw new RuntimeException("No Such Label");

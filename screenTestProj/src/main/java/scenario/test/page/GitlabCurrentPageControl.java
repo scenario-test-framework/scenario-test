@@ -12,7 +12,7 @@ public class GitlabCurrentPageControl {
             currentPage = new GitlabLoginPage(arg1);
         } else {
             currentPage = new GitlabProjectPage(arg1);
-        }
+         }
     }
 
     public void screenshot(String arg1) throws Throwable {
